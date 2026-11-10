@@ -1,0 +1,63 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row mt-3">
+        <div class="col-8 offset-2" >
+            
+    <h1>New Listing</h1>
+
+    
+
+
+    <form method="POST" action="/listings"  novalidate class="needs-validation" enctype="multipart/form-data" >
+       
+        <div class="mb-3">
+        <label for="title" class="form-label"><b>Title:</b></label><br>
+        <input type="text"  placeholder="Title" name="listing[title]" id="title" required class="form-control">
+       
+        <div class="valid-feedback">Title looks good!</div>
+        </div>
+
+        <div class="mb-3">
+        <label for="description" class="form-label"><b>Description:</b></label><br>
+        <textarea name="listing[description]"  placeholder="Description" id="description" required class="form-control"></textarea>
+         <div class="invalid-feedback">Write a short description</div>
+    </div>
+
+         
+         <div class="mb-3">
+        <label for="image" class="form-label"><b>Upload Image:</b></label><br>
+        <input type="file"  name="listing[image]" id="image" class="form-control">
+        required
+         </div>
+         
+         <div class="row">
+         <div class="mb-3 col-md-4">
+        <label for="price" class="form-label"><b>Price:</b></label><br>
+        <input placeholder="Price" name="listing[price]" id="price" required class="form-control">
+
+        <div class="invalid-feedback">Enter valid price</div>
+         </div>
+
+         <div class="mb-3 col-md-8">
+        <label for="country" class="form-label"><b>Country:</b></label><br>
+        <input type="text" placeholder=" Country" name="listing[country]" id="country" required class="form-control">
+        <div class="invalid-feedback">Invalid Country</div>
+         </div>
+
+         </div>
+
+         <div>
+        <label for="location" class="form-label"><b>Location:</b></label><br>
+        <input type="text"  placeholder=" Location" name="listing[location]" id="location" required class="form-control">
+        <div class="invalid-feedback">invalid location</div>
+         </div>
+
+        <button type="submit" class="btn btn-dark add-btn mt-3">Create Listing</button>
+       <br>
+
+       </form>
+    </div>
+    </div>
+
+
+

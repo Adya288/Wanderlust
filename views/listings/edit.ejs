@@ -1,0 +1,61 @@
+<% layout('layouts/boilerplate') %>
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+        
+    <h1>Edit Listing</h1>
+    <form method="POST" action="/listings/<%= listing.id %>?_method=PUT" novalidate class="needs-validation"  enctype="multipart/form-data">
+
+        <div class="mb-3">
+          <label for="title">Title:</label><br>
+           <input type="text" name="listing[title]" id="title" value="<%= listing.title %>" required class="form-control"><br>
+        </div>
+
+         <div class="mb-3">
+           <label for="description">Description:</label><br>
+            <textarea name="listing[description]" id="description" required class="form-control"><%= listing.description %> </textarea><br>
+            <div class="invalid-feedback">Please enter a valid description</div>
+        </div>
+
+
+        <div class="mb-3">
+          Current Image:<br>
+          <img src="<%= originalImageUrl %>"  style="height: 20rem;"><br>
+
+        </div>
+
+         <div class="mb-3">
+          <label for="image">Upload new Image:</label><br>
+          <input type="file" name="listing[image]" id="image" class="form-control">
+        </div>
+        
+     <div class="row">
+         <div class="mb-3 col-md-4">
+        <label for="price">Price:</label><br>
+        <input  name="listing[price]" id="price" value="<%= listing.price %>" required class="form-control"><br>
+        <div class="invalid-feedback">invalid price</div>
+         </div>
+
+          <div class="mb-3 col-md-8">
+        <label for="country">Country:</label><br>
+        <input type="text" name="listing[country]" id="country" value="<%= listing.country %>" required class="form-control"><br>
+        <div class="invalid-feedback">invalid country</div>
+        </div>
+    </div>
+
+          <div class="mb-3">
+        <label for="location">Location:</label><br>
+        <input type="text" name="listing[location]" id="location" value="<%= listing.location %>" required class="form-control"><br>
+        <div class="invalid-feedback">invalid location</div>
+        </div>
+        <button type="submit" class="btn btn-dark edt-btn mt-3">EDIT</button>
+        <br><br>
+        
+</form>
+</div>
+</div>
+<script src="/js/script.js"></script>
+
+    
+
+
+

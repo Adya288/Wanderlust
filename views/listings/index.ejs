@@ -1,0 +1,135 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+#filters{
+  display: flex;
+  flex-wrap: wrap;
+  }
+  .filter{
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem ;
+    border-radius: 20px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.8;
+
+  }
+  .filter:hover{
+    opacity: 2;
+    cursor: pointer;
+  }
+  .filter p{
+    margin: 0;
+    padding: 0;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+  }
+</style>
+<div class="mt-3">
+<div id="filters">
+<div class="filter">
+  <div><i class="fa-solid fa-fire"></i></div>
+ <p> Trending</p>
+</div>
+
+<div class="filter">
+  <div><i class="fa-solid fa-city"></i></div>
+  <p> City</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-bed"></i></div>
+    <p> Room</p>
+  </div>
+
+   <div class="filter">
+    <div><i class="fa-brands fa-fort-awesome-alt"></i></div>
+    <p> Castle</p>
+  </div>
+
+  <div class="filter">
+    <div><i class="fa-solid fa-mountain-sun"></i></div>
+    <p> Mountains</p>
+  </div>
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+     <label class="form-check-label" for="flexSwitchCheckDefault">Display total after Taxes</label>
+   </div>
+</div>
+</div>
+</div>
+<body>
+  
+  <ul>
+   
+    
+
+<div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 mt-3">
+
+<% for (let listing of allListings) { %>
+
+  <a href="/listings/<%=listing._id%>" class="listing-links">
+ <div class="card col listing-card" >
+  
+  <img src="<%= listing.image.url%>" 
+  class="card-img" 
+  alt="listing_image" 
+  style ="height:20rem">
+
+ 
+
+  <div class="card-body">
+    <p class="listing-title"><%= listing.title %></p>
+    <p class="listing-price"
+   data-base-price="<%= listing.price %>">
+    &#8377; <%= listing.price.toLocaleString("en-IN") %> /Night
+    <i> +18% GST</i>
+</p>
+    </p>
+  
+  </div>
+ </div>
+ </a>
+  <% } %>
+</ul>
+</div>
+</body>
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+
+if (taxSwitch) {
+    taxSwitch.addEventListener("change", function () {
+
+        let priceElements = document.querySelectorAll(".listing-price");
+
+        priceElements.forEach(function (priceElement) {
+
+            let basePrice = Number(priceElement.dataset.basePrice);
+
+            if (!Number.isFinite(basePrice)) {
+                console.error("Invalid price:", priceElement.dataset.basePrice);
+                return;
+            }
+
+            let finalPrice = taxSwitch.checked
+                ? basePrice * 1.18
+                : basePrice;
+
+            priceElement.innerHTML =
+                `&#8377; ${finalPrice.toLocaleString("en-IN", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                })} /Night`;
+        });
+    });
+}
+        
+    
+</script>
+  
