@@ -10,6 +10,8 @@
     color: #f5ecec;
     border-color: #fff;
     background-color: #fe424d;
+    border-radius: 25px;
+    flex-shrink: 0;
   }
   .search-btn i{
     display: inline;
@@ -31,17 +33,11 @@
   <button class="navbar-toggler" 
     type="button" 
     data-bs-toggle="collapse" 
-    data-bs-target="#navbarNavAltMarkup" 
-     >
-  
-   
-      <span class="navbar-toggler-icon"></span>
+    data-bs-target="#navbarNavAltMarkup" >
+     <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-       <a class="nav-link" href="/listings">Explore</a>
-       </div>
-   <div class="navbar-nav ms-auto">
+
+    <div class="navbar-nav ms-auto">
         
  <form class=" d-flex ">
     <input class="form-control me-2 search-input" type="search" placeholder="Search Destination" >
@@ -49,6 +45,12 @@
     <i class="fa-solid fa-magnifying-glass"></i>Search</button>
   </form>
     </div>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+       <a class="nav-link" href="/listings">Explore</a>
+       </div>
+   
 
        <div class="navbar-nav ms-auto">
          <a class="nav-link" href="/listings/new">Airbnb your home</a>
